@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script> <!-- Linkki ulkoiseen JavaScript-tiedostoon -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: 'Playfair Display SC';
+        }
+
+
+        .nav-links {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            padding: 20px;
+            gap: 70px;
+            align-items: center;
+            background: rgb(198, 226, 203);
+        }
+
+
+        .nav-links a,
+        .language-links a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover,
+        .language-links a:hover {
+            color: darkgray;
+        }
+
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 12px;
+            width: 320px;
+        }
+
+
+        .search-box input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+        }
+
+
+        .search-box .icon {
+            font-size: 20px;
+            color: #888;
+            margin-right: 8px;
+        }
+
+
+        #tapahtumat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 100px;
+            gap: 10px;
+            margin: auto;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 12px;
+            width: 320px;
+        }
+
+        .search-box input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .search-box .icon {
+            font-size: 20px;
+            color: #888;
+            margin-right: 8px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+
+        }
+
+        .btn:hover {
+            background-color: rgb(28, 49, 69) !important;
+            color: white !important;
+            border-color: rgb(28, 49, 69) !important;
+        }
+
+
+        .filter-box {
+            background: rgb(71, 19, 35);
+            padding: 15px;
+            color: rgb(254, 192, 170);
+            text-align: center;
+            width: 300px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+
+        .content-box {
+            width: 70%;
+            margin: auto;
+            height: 300px;
+            background: #ddd;
+        }
+
+        .event-card {
+            display: flex;
+            background-color: #c1e1c1;
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 700px;
+            margin-bottom: 20px;
+            /* Adjust spacing between cards */
+        }
+
+        .event-image {
+            width: 100%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-details {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #611c1c;
+        }
+
+        .event-button {
+            background-color: rgb(56, 77, 72);
+            color: rgb(254, 192, 170);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+
+
+        .button {
+            align-self: flex-end;
+            background: rgb(56, 77, 72) !important;
+            color: rgb(254, 192, 170) !important;
+        }
+
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            align-items: center;
+        }
+
+
+        .nav-button {
+            background: transparent;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 50px;
+        }
+
+
+        .footer {
+            background-color: rgb(254, 192, 170);
+            padding: 60px;
+            text-align: center;
+            margin-top: 70px;
+            font-size: 14px;
+        }
+
+        .footer {
+            background-color: rgb(254, 192, 170);
+            padding: 60px;
+            margin-top: 70px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-around;
+            /* Distributes columns evenly */
+            text-align: left;
+        }
+
+        .footer-column {
+            flex: 1;
+            /* Makes columns equal width */
+            max-width: 300px;
+            /* Adjust width as needed */
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            margin: 5px 0;
+        }
+
+
+        .footer h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+
+        .footer a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+        }
+
+        .subscription {
+            margin-top: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .container-fluid {
+            text-align: left;
+            margin-left: 0;
+            margin-right: auto;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #ITAKLOGO {
+            max-width: 300px;
+            width: auto;
+            height: auto;
+        }
+
+
+        #ITAKLOGO1 {
+            max-width: 80px;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="custom-navbar">
+        <div style="width: 170px;"></div>
+        <div class="nav-links">
+            <a href="#">Etusivu</a>
+            <a href="#">Meistä</a>
+            <a href="#">Ohjelmisto/kalenteri</a>
+            <a href="#"><img id="ITAKLOGO1" src="ITAK_logo_musta-ilman-taustaa.png" width="40%" height="30%"></a>
+            <a href="#">Tanssia Itä-Suomessa</a>
+            <a href="#">Ajankohtaista</a>
+            <a href="#">ITAK-näyttämö</a>
+            <div class="language-links">
+                <a href="#">FI</a>
+                <a href="#">EN</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+
+
+
+            <!--tapahtumat-->
+            <div class="col-sm-3" id="tapahtumat">
+                <div class="search-container">
+                    <div class="search-box">
+                        <span class="icon">🔍</span>
+                        <input type="text" placeholder="Kirjoita hakusana">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 p-3">
+                        <div class="filter-box">Näytä (X) hakutulosta</div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="container">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="btn-group">
+                                <button class="btn"
+                                    style="color: rgb(28, 49, 69); border-color: rgb(28, 49, 69);">Tänään</button>
+                                <button class="btn btn-outline"
+                                    style="color: rgb(28, 49, 69); border-color: rgb(28, 49, 69);">Viikko</button>
+                                <button class="btn btn-outline"
+                                    style="color: rgb(28, 49, 69); border-color: rgb(28, 49, 69);">Kuukausi</button>
+                            </div>
+                        </div>
+
+                        <div class="search-container p-4">
+                            <form>
+                                <div class="mb-3">
+                                    <div class="filter-box">Milloin</div>
+                                    <input type="date" class="form-control" id="milloin">
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="filter-box">Mistä</div>
+                                    <input type="text" class="form-control" id="mista" placeholder="Syötä lähtöpaikka">
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="filter-box">Mihin</div>
+                                    <input type="text" class="form-control" id="mihin" placeholder="Syötä määränpää">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6 p-3">
+                        <div class="filter-box">Tapahtumalaji</div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkammatti" value="something" checked>
+                            <label class="form-check-label" for="check1">ammattilaisille</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checktyöpajat" value="something"
+                                checked>
+                            <label class="form-check-label" for="check1">työpajat</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6 p-3">
+                        <div class="filter-box">Tapahtumatpaikat</div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="check1" value="something" checked>
+                            <label class="form-check-label" for="check1">Itak näyttämö Kuopio</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkjoensuu" value="something" checked>
+                            <label class="form-check-label" for="check1">Joensuu</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkkuopionmuseomonitoimitila"
+                                value="something" checked>
+                            <label class="form-check-label" for="check1">Kuopion museon monitoimitila</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkkaikki" value="something" checked>
+                            <label class="form-check-label" for="check1">Valitse kaikki</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6 p-3">
+                        <div class="filter-box">Hinta</div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkkaikki" value="something" checked>
+                            <label class="form-check-label" for="check1">Maksulliset</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkkaikki" value="something" checked>
+                            <label class="form-check-label" for="check1">Maksuttomat</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!--tulokset-->
+
+            <div class="col-sm-8 tapahtumantulokset">
+                <div class="event-card">
+
+                    <div class="event-image">
+                        <span>Image Here</span>
+                    </div>
+
+
+                    <div class="event-details">
+                        <div class="event-title">TAPAHTUMAN NIMI</div>
+                        <p>Klo aika, paikka</p>
+                        <p>Lyhyt kuvaus tapahtumasta</p>
+                        <p>Lisätietoa</p>
+                        <button class="event-button">Maksuton</button>
+                    </div>
+                </div>
+                <div class="event-card">
+
+                    <div class="event-image">
+                        <span>Image Here</span>
+                    </div>
+
+
+                    <div class="event-details">
+                        <div class="event-title">TAPAHTUMAN NIMI</div>
+                        <p>Klo aika, paikka</p>
+                        <p>Lyhyt kuvaus tapahtumasta</p>
+                        <p>Lisätietoa</p>
+                        <button class="event-button">Maksuton</button>
+                    </div>
+                </div>
+                <div class="event-card">
+
+                    <div class="event-image">
+                        <span>Image Here</span>
+                    </div>
+
+
+                    <div class="event-details">
+                        <div class="event-title">TAPAHTUMAN NIMI</div>
+                        <p>Klo aika, paikka</p>
+                        <p>Lyhyt kuvaus tapahtumasta</p>
+                        <p>Lisätietoa</p>
+                        <button class="event-button">Maksuton</button>
+                    </div>
+                </div>
+                <div class="event-card">
+
+                    <div class="event-image">
+                        <span>Image Here</span>
+                    </div>
+
+
+                    <div class="event-details">
+                        <div class="event-title">TAPAHTUMAN NIMI</div>
+                        <p>Klo aika, paikka</p>
+                        <p>Lyhyt kuvaus tapahtumasta</p>
+                        <p>Lisätietoa</p>
+                        <button class="event-button">Maksuton</button>
+                    </div>
+                </div>
+                <div class="event-card">
+
+                    <div class="event-image">
+                        <span>Image Here</span>
+                    </div>
+
+
+                    <div class="event-details">
+                        <div class="event-title">TAPAHTUMAN NIMI</div>
+                        <p>Klo aika, paikka</p>
+                        <p>Lyhyt kuvaus tapahtumasta</p>
+                        <p>Lisätietoa</p>
+                        <button class="event-button">Maksuton</button>
+                    </div>
+                </div>
+                <div class="event-card">
+
+                    <div class="event-image">
+                        <span>Image Here</span>
+                    </div>
+
+
+                    <div class="event-details">
+                        <div class="event-title">TAPAHTUMAN NIMI</div>
+                        <p>Klo aika, paikka</p>
+                        <p>Lyhyt kuvaus tapahtumasta</p>
+                        <p>Lisätietoa</p>
+                        <button class="event-button">Maksuton</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!--footer-->
+    <div class="footer">
+
+        <div class="footer-column">
+            <h3><img id="ITAKLOGO" src="ITAK_logo_musta-ilman-taustaa.png" width="100%" height="auto"></h3>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-column">
+            <h3>Osoite</h3>
+            <a href="#">Sudekatu 42/2, Kuopio</a>
+            <a href="#">Yhteystiedot</a>
+            <a href="#">ITAK-Näyttämö</a>
+            <a href="#">Medialle</a>
+            <a href="#">Saavutettavuusseloste</a>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-column">
+            <h3>Info</h3>
+            <a href="#">ITAK-Näyttämö</a>
+            <a href="#">Medialle</a>
+            <a href="#">Saavutettavuusseloste</a>
+        </div>
+
+        <div class="footer-column">
+            <img id="ITAKLOGO" src="maksammetaitelijalle.png" width="40%" height="30%">
+        </div>
+    </div>
+
+</body>
+
+</html>

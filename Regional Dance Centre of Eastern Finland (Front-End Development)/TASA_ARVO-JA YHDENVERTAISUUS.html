@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script> <!-- Linkki ulkoiseen JavaScript-tiedostoon -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+       /* Puhelimeen */
+
+        @media (max-width: 768px) {
+
+            body {
+                font-family: 'Playfair Display SC';
+            }
+
+
+            .banner {
+                height: 600px;
+                background: #ccc;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+
+            }
+
+            .nav-links {
+                display: flex;
+                flex-grow: 1;
+                justify-content: center;
+                gap: 100px;
+                align-items: center;
+            }
+
+            .language-links {
+                display: flex;
+                gap: 15px;
+                font-weight: bold;
+                margin-right: 25px;
+                margin-left: 15px;
+            }
+
+            .nav-links a,
+            .language-links a {
+                text-decoration: none;
+                color: black;
+                font-size: 18px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .nav-links a:hover,
+            .language-links a:hover {
+                color: darkgray;
+            }
+
+            .navbar a {
+                text-decoration: none;
+                color: black;
+                text-align: center;
+            }
+
+            .nav-buttons {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                width: 100%;
+                top: 0;
+                bottom: 0;
+                align-items: center;
+            }
+
+            .nav-button {
+                background: transparent;
+                color: black;
+                border: none;
+                cursor: pointer;
+                font-size: 50px;
+            }
+
+            .nav-button {
+                font-size: 35px;
+
+            }
+
+            .navbar {
+                background-color: rgb(198, 226, 203) !important;
+                color: black;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+                padding: 15px;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+                justify-content: center;
+            }
+
+            .navbar-nav {
+                align-items: center;
+                text-align: center;
+            }
+
+            .nav-button:first-child {
+                left: 0px;
+            }
+
+            .nav-button:last-child {
+                right: 40px;
+            }
+
+
+            .nav-buttons {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                width: 40%;
+                top: 0;
+                bottom: 0;
+                align-items: center;
+            }
+
+
+            .container {
+                display: flex;
+                gap: 40px;
+                margin-top: 50px;
+                padding: 50px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+
+            .nav-buttons {
+                width: 420px;
+            }
+
+            .nav-tools ul {
+                margin-right: 20px;
+            }
+
+            .subscription-box input {
+                width: 150%;
+            }
+
+
+            .footer {
+                background: rgb(254, 192, 170);
+                padding: 60px;
+                text-align: center;
+                margin-top: 70px;
+                font-size: 14px;
+            }
+
+            .footer a {
+                color: black;
+            }
+
+            #ITAKLOGO {
+                max-width: 200px;
+                width: auto;
+                height: auto;
+            }
+
+            #ITAKLOGO1 {
+                max-width: 70px;
+                width: auto;
+                height: auto;
+            }
+
+            .divider {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+
+            .divider::before,
+            .divider::after {
+                content: "◆";
+                font-size: 14px;
+                margin: 0 10px;
+            }
+
+            .divider-line {
+                flex-grow: 1;
+                width: 100%;
+                height: 1px;
+                background-color: black;
+            }
+
+            .dropdown-menu {
+                background: rgb(198, 226, 203);
+                border-style: none;
+            }
+
+
+            .my-button {
+                background: rgb(56, 77, 72) !important;
+                color: rgb(254, 192, 170) !important;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+            .header {
+                font-family: 'Pridi';
+                color: rgb(56, 77, 72);
+            }
+
+            .h2 {
+                font-size: 150%;
+                align-items: left;
+                text-align: left !important;
+                margin-left: 0;
+                width: 95%;
+            }
+
+            .footer h3 {
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+
+            .footer a {
+                display: block;
+                margin: 10px 0;
+                text-decoration: none;
+                color: black;
+            }
+
+            .subscription {
+                margin-top: 20px;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            .navbar-expand-lg {
+                display: none !important;
+            }
+        }
+
+
+        @media (max-width: 1023px) {
+            .custom-navbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <nav class="navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                onclick="toggleMenuIcon(this)">
+                <span class="toggler-icon">&#9776;</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav">
+
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+
+                    <li class="nav-item"><a class="nav-link active" href="#">ETUSIVU</a></li>
+
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            MEISTÄ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Ihmiset</a></li>
+                            <li><a class="dropdown-item" href="#">Strategia</a></li>
+                            <li><a class="dropdown-item" href="#">Vuosikertomukset</a></li>
+                            <li><a class="dropdown-item" href="#">Tasa-arvo ja yhdenvertaisuus</a></li>
+                            <li><a class="dropdown-item" href="#">Turvallisempi tila</a></li>
+                            <li><a class="dropdown-item" href="#">Arkisto</a></li>
+                        </ul>
+                    </li>
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            AJANKOHTAISTA
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Kalenteri</a></li>
+                            <li><a class="dropdown-item" href="#">Esitykset</a></li>
+                            <li><a class="dropdown-item" href="#">Liput</a></li>
+                        </ul>
+                    </li>
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            TANSSIA ITÄ-SUOMESSA
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Esitykset</a></li>
+                            <li><a class="dropdown-item" href="#">Kurssit</a></li>
+                            <li><a class="dropdown-item" href="#">Palvelut</a></li>
+                            <li><a class="dropdown-item" href="#">Tapaamiset</a></li>
+                        </ul>
+                    </li>
+
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            ITAK-NÄYTTÄMÖ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Vuokraa tila</a></li>
+                            <li><a class="dropdown-item" href="#">tekniikka</a></li>
+                            <li><a class="dropdown-item" href="#">Esteettömyys</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="img"><img id="ITAKLOGO1" src="ITAK_logo_musta-ilman-taustaa.png" width="40%" height="30%"></div>
+
+            <div class="nav-tools">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            FI/EN
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Suomi</a>
+                            <a class="dropdown-item" href="#">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+    <div class="custom-navbar">
+        <div style="width: 170px;"></div>
+        <div class="nav-links">
+            <a href="#">Etusivu</a>
+            <a href="#">Meistä</a>
+            <a href="#">Ohjelmisto/kalenteri</a>
+            <a href="#"><img id="ITAKLOGO1" src="ITAK_logo_musta-ilman-taustaa.png" width="40%" height="30%"></a>
+            <a href="#">Tanssia Itä-Suomessa</a>
+            <a href="#">Ajankohtaista</a>
+            <a href="#">ITAK-näyttämö</a>
+        </div>
+        <div class="language-links">
+            <a href="#">FI</a>
+            <a href="#">EN</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h2 class="h2 mt-4">ITÄ-SUOMEN TANSSIN ALUEKESKUKSEN<br> TASA-ARVO- JA YHDENVERTAISUUSSUUNNITELMA</h2>
+        <div class="col-md-6 Tasa-arvo ja yhdenvertaisuussuunnitelma">
+
+            <p style="color:rgb(71, 19, 35);">HYVÄKSYTTY YHDISTYKSEN HALLITUKSEN KOKOUKSESSA 8.3.2024</p>
+
+            <div class="header">
+                <h1>1. JOHDANTO</h1>
+            </div>
+            Itä-Suomen tanssin aluekeskus ITAK (Tanssitaiteen tuki<br>
+            ry) sitoutuu toiminnassaan yhdenvertaisuuden ja tasa-<br>
+            arvon edistämiseen. ITAK noudattaa toiminnassaan<br>
+            yhdenvertaisuuslakia ja tasa-arvolakia. Tämä koskee<br>
+            yhdistyksen toimintaa niin palkattujen työntekijöiden,<br>
+            luottamushenkilöiden, jäsenten, tapahtumien<br>
+            osallistujien kuin viestinnän osalta.<br>
+            ITAK toteuttaa <br> työnantajana tasa-arvoa edistäviä toimia ja edistää järjestämissään tapahtumissa
+            aktiivisesti yhdenvertaisuutta.<br>
+            Toimia arvioidaan tasaisin väliajoin henkilökunnalle, jäsenistölle ja yleisölle osoitetuilla
+            kyselyillä.<br><br>
+
+            Tasa-arvo ja yhdenvertaisuus käsitetään ITAK:ssa laajasti ihmisten keskinäisenä samanarvoisuutena, johon
+            vaikuttavat muun muassa normit, etuoikeudet, vallanjako, saavutettavuus ja esteettömyys.<br>
+            Seuraavissa luvuissa avataan näitä yhdenvertaisuudelle ja tasa-arvolle tärkeitä käsitteitä.<br><br>
+
+            <div class="header">
+                <h1>2. YHDENVERTAISUUS</h1>
+            </div>
+            Yhdenvertaisuudella tarkoitetaan sitä, että kaikki<br>
+            ihmiset ovat samanarvoisia riippumatta heidän<br>
+            sukupuolestaan, iästään, etnisestä tai kansallisesta<br>
+            alkuperästään, kansalaisuudestaan, kielestään, uskonnostaan ja vakaumuksestaan, mielipiteestään,<br>
+            vammastaan, terveydentilastaan, seksuaalisesta<br>
+            suuntautumisestaan tai muusta henkilöön liittyvästä<br>
+            syystä.<br><br>
+
+            <div class="header">
+                <h1>3. TASA-ARVO</h1>
+            </div>
+            Tasa-arvolla tarkoitetaan tasa-arvolain mukaisesti<br>
+            sukupuoleen, sukupuoli-identiteettiin tai sukupuolen<br>
+            ilmaisuun perustuvan syrjinnän kieltoa. Tasa-arvolain<br>
+            mukaisesti on tärkeää edistää erityisesti naisten ja<br>
+            sukupuolivähemmistöjen asemaa työelämässä.<br><br>
+
+            <div class="header">
+                <h1>4. NORMIT</h1>
+            </div>
+            Ihmisen elämää ohjaavat myös monet seikat, jotka on<br>
+            määritetty hänestä itsestään riippumatta. Normit ovat<br>
+            yhteiskunnallisia oletuksia ja odotuksia siitä, mikä on<br>
+            yleisesti hyväksyttyä, “normaalia” tai toivottavaa eri<br>
+            tilanteissa. Myös taiteen kentällä on omat<br>
+            norminsa.Normatiivisuus kertoo siitä, mitä pidämme<br>
+            normaalina, tavoiteltavana tai ihailtavana. Normit<br>
+            auttavat meitä toimimaan tilanteissa, mutta toisinaan<br>
+            normit ovat syrjiviä ja rajoittavat toimintaa. Normiin<br>
+            kuulumisen kautta saa usein etuoikeuksia ja toisaalta<br>
+            taas, jos rikkoo normeja tai ei mahdu niihin, saattaa tulla syrjityksi. Työelämässä on tärkeää<br>
+            huomata, että päivittäiset teot, ajatukset, sanat ja<br>
+            organisaatiossa tapahtuva vallankäyttö saattavat<br>
+            perustua syrjiviin normeihin tiedostamatta.<br><br>
+
+            <div class="header">
+                <h1>5. ETUOIKEUDET</h1>
+            </div>
+            Etuoikeuksilla tarkoitetaan niitä etuja, joita ihmiset<br>
+            tai ihmisryhmät saavat eri tilanteissa.Etuoikeudet<br> perustuvat yhteiskunnan normeihin ja voivat olla myös
+            tiedostamattomia.<br>
+            Myös tanssin kentällä esimerkiksi ihonväri, koulutustausta, kielitaito, kehotyyppi, sukupuoli ja vammaisuus
+            vaikuttavat mahdollisuuksiimme toimia työkentällä eri asemissa.<br>
+            Etuoikeuksia pitää tarkastella, jotta voimme olla tietoisia työelämäämme vaikuttavista etuoikeuksista ja
+            haasteista, joita emme itse joudu kohtaamaan.<br><br>
+
+            <div class="header">
+                <h1>6. VALLANJAKO</h1>
+            </div>
+            Vallan jako työelämässä voi yksinkertaisimmillaan<br>
+            tarkoittaa työnjakoa. Yhdenvertaisuuden ja tasa-arvon<br>
+            näkökulmasta se on tärkeää, koska haluamme<br>
+            työkuorman jakaantuvan työyhteisössä<br>
+            oikeudenmukaisesti. Lisäksi on toivottavaa, että<br>
+            jokainen yhteisön jäsen tietää oman toimenkuvansa<br>
+            vastuut ja velvollisuudet niin, ettei niistä joudu<br>
+            neuvottelemaan koko ajan uudelleen. Läpinäkyvä<br>
+            vallanjako lisää myös luottamusta ja mahdollistaa<br>
+            vallankäytön kriittisen tarkastelun.<br><br>
+
+
+            <div class="header">
+                <h1>7. SAAVUTETTAVUUS JA ESTEETTÖMYYS</h1>
+            </div>
+            Saavutettavuus ja esteettömyys takaavat jokaiselle<br>
+            mahdollisuuden osallistua ITAK:n<br>
+            toimintaan. Esteettömyydellä tarkoitetaan ihmisten<br>
+            moninaisuuden huomioon ottamista rakennetun<br>
+            ympäristön suunnittelussa, toteuttamisessa ja<br>
+            kunnossapidossa. Esteettömyydessä ei ole kyse vain<br>
+            liikkumisesta vaan siinä huomioidaan myös<br>
+            esimerkiksi näkemiseen, kuulemiseen,<br>
+            ymmärtämiseen ja kommunikaatioon liittyvät<br>
+            asiat. Saavutettavuudella tarkoitetaan usein<br>
+            esimerkiksi palvelua ja viestintää, jotka soveltuvat<br>
+            kaikille. Saavutettavuutta on myös ihmisten<br>
+            moninaisuuden huomioon ottava ilmapiiri ja<br>
+            asenteet.<br><br>
+
+            <div class="header">
+                <h1>8. TULEVAT TOIMENPITEET JA VASTUUTAHOT</h1>
+            </div>
+            Kaikessa ITAK:n toiminnassa noudatetaan<br>
+            turvallisemman tilan periaatteita ja ITAK-näyttämön<br>
+            käyttäjiltä edellytetään samaa. Ne ovat nähtävissä<br>
+            jokaisen tilaisuuden seinällä.<br>
+            <b>Vastuutaho:</b> tilaisuuden tuottaja ja/tai vetäjä<br><br>
+
+            ITAK:n häirintäyhdyshenkilöitä ovat toiminnanjohtaja ja<br>
+            hallituksen puheenjohtaja.<br>
+            <b>Vastuutaho:</b> hallitus ja toiminnanjohtaja<br><br>
+
+            Yhdenvertaisuutta ja tasa-arvoa uhkaavista tilanteista<br>
+            kannustetaan ilmoittamaan henkilökunnalle tai<br>
+            häirintäyhdyshenkilöille, joiden yhteystiedot ovat<br>
+            näkyvillä myös turvallisemman tilan periaatteissa.<br>
+            Ilmoitetut tilanteet käydään läpi ja apuun pyydetään<br>
+            tarvittaessa ulkopuolista tukea.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja ja hallituksen<br>
+            puheenjohtaja<br><br>
+
+            ITAK:n viestinnässä kiinnitetään huomiota<br>
+            sukupuolineutraaliin kielenkäyttöön.<br>
+            <b>Vastuutaho:</b> tiedottaja<br><br>
+
+            ITAK:n nettisivuille laitetaan lomake, jonka avulla<br>
+            ITAK:n henkilökunnalle voi kertoa epäasiallisesta<br>
+            käytöksestä nimettömästi.<br>
+            <b>Vastuutaho:</b> tiedottaja<br><br>
+
+            ITAK-näyttämön WC-tilat muutetaan<br>
+            sukupuolineutraaleiksi.<br>
+            <b>Vastuutaho:</b> Kuopion kaupungin tilapalvelut<br><br>
+
+
+
+
+
+            ITAK käyttää pitkäaikaisten työsuhteiden rekrytointiin<br>
+            anonyymia rekrytointia vähintään rekrytoinnin<br>
+            ensimmäisessä vaiheessa.<br>
+            <b>Vastuutaho:</b> hallitus ja toiminnanjohtaja<br><br>
+
+            Suurin osa rekrytoinneista tapahtuu avoimen haun<br>
+            kautta ja ITAK kannustaa rekrytointi-ilmoituksissa eri<br>
+            taustoista olevia henkilöitä hakemaan töihin.<br>
+            <b>Vastuutaho:</b> hallitus, toiminnanjohtaja ja taiteellinen johtaja<br><br>
+
+            ITAK kiinnittää huomiota viestinnän selkeyteen ja<br>
+            ymmärrettävyyteen sekä mahdollisuuksien mukaan<br>
+            monikielisyyteen.<br>
+            <b>Vastuutaho:</b> tiedottaja<br><br>
+
+            ITAK:n viestinnässä huomioidaan esteettömyys: jokaisen<br>
+            tilaisuuden yhteydessä ilmoitetaan esteettömyystiedot<br>
+            ja pyritään esteettömyyteen.<br>
+            <b>Vastuutaho:</b> tiedottaja<br><br>
+
+            ITAK-näyttämölle luodaan kirjalliset käytännöt<br>
+            pyörätuolipaikoille.<br>
+            <b>Vastuutaho:</b> näyttämömestari<br><br>
+
+            ITAK pyrkii lippuhinnoittelulla takaamaan toiminnan<br>
+            saavutettavuuden. ITAK on mm. mukana Kaiku-<br>
+            korttihankkeessa, joka mahdollistaa vähävaraisille<br>
+            ilmaisia esityslippuja.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja<br><br>
+
+            Vuokrahinnat ja niiden periaatteet tehdään entistä<br>
+            läpinäkyvämmäksi nettisivuille.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja, tuottaja ja tiedottaja<br><br>
+
+            ITAK:n hallituksen velvollisuudet ja vastuut on kirjattu<br>
+            yksityiskohtaisesti ylös ja uusi hallitus perehdytetään<br>
+            tehtäviinsä joka vuosi: vallanjako hallituksen ja<br>
+            henkilökunnan kesken on selkeä ja kaikkien<br>
+            asianomaisten tiedossa.<br>
+            <b>Vastuutaho:</b> hallituksen puheenjohtaja<br><br>
+
+            ITAK:n toiminta on mahdollisimman läpinäkyvää:<br>
+            Henkilökunnan työtehtävät ja vastuut on kirjattu ylös<br>
+            ja ne on pyynnöstä nähtävillä koko jäsenistölle.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja<br><br>
+
+            Kaikki ITAK:n päätökset perustellaan ja perustelut on<br>
+            pyynnöstä nähtävillä koko jäsenistölle ja<br>
+            henkilökunnalle.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja ja taiteellinen johtaja<br><br>
+
+            Tuotantoprosessi on selkeä ja työryhmien<br>
+            ensimmäisessä tuotantopalaverissa kunkin<br>
+            velvollisuudet ja vastuut käydään yhdessä läpi.<br>
+            <b>Vastuutaho:</b> tuottaja<br><br>
+
+            Toiminta on suunnitelmallista ja perustuu viiden<br>
+            vuoden välein tehtävään strategiaan.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja ja hallitus<br><br>
+
+            Työsopimuspohjat yhtenäistetään.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja ja tuottaja<br><br>
+
+            Hallitus noudattaa hyvää hallintotapaa: asialistat &<br>
+            pöytäkirjat on saatavilla asianmukaisesti (keskusteluun<br>
+            on mahdollista osallistua myös kommentoimalla ennen<br>
+            kokousta), päätökset perustuvat riittävään tietoon ja<br>
+            avoimeen dialogiin ja ne perustellaan huolellisesti.<br>
+            Hallituksen jäsenten tulee olla tietoisia<br>
+            esteellisyyskäytännöistä ja välttää<br>
+            eturistiriitatilanteita.<br>
+            <b>Vastuutaho:</b> hallituksen puheenjohtaja<br><br>
+
+            Hallitustyöskentelystä viestetään avoimesti, jotta<br>
+            kynnys uusille jäsenille on mahdollisimman matala<br>
+            Vastuustaho: hallituksen puheenjohtaja.<br><br>
+
+            <div class="header">
+                <h1>9. ARVIOINTI JA SEURANTA</h1>
+            </div>
+            Yhdenvertaisuuden ja tasa-arvon parantamiseen<br>
+            tähtääviä toimia ja tätä suunnitelmaa arvioidaan joka<br>
+            kolmas vuosi, seuraavan kerran vuonna 2026.<br>
+            Arviointi tapahtuu henkilökunnan ja hallituksen kesken sekä<br>
+            henkilökunnalle, jäsenistölle ja yleisölle osoitetulla<br>
+            kyselyllä. Arvioinnin tuloksena tämä suunnitelma<br>
+            päivitetään ja siihen liitetään arvioinnin<br>
+            johtopäätökset.<br><br>
+
+            ITAK kouluttaa hallitustaan ja henkilöstöään<br>
+            yhdenvertaisuuteen ja tasa-arvoon liittyvissä asioissa<br>
+            vähintään joka kolmas vuosi.<br>
+            <b>Vastuutaho:</b> toiminnanjohtaja<br><br>
+
+            Hallituksen monimuotoisuutta edistetään<br>
+            valmistelemalla jäsenkokoukselle monipuolisesti<br>
+            ehdokkaita (ainakin sukupuoli, ikä,<br>
+            asiantuntijuus). Yhdistyksen jäsenet voivat antaa<br>
+            palautetta. Palautteet käsitellään aina hallituksen<br>
+            kokouksessa.<br>
+            <b>Vastuutaho:</b> Hallituksen puheenjohtaja ja<br>
+            toiminnanjohtaja<br><br>
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="footer">
+        <h3><img id="ITAKLOGO" src="ITAK_logo_musta-ilman-taustaa.png" width="40%" height="30%"></h3>
+        <a href="#">ITAK-Näyttämö</a>
+        <a href="#">Sudekatu 42/2, Kuopio</a>
+        <a href="#">Yhteystiedot</a>
+        <a href="#">Medialle</a>
+        <a href="#">Saavutettavuusseloste</a>
+        <img id="ITAKLOGO" src="maksammetaitelijalle.png" width="40%" height="30%">
+    </div>
+
+
+</body>
+
+</html>

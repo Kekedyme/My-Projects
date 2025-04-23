@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script> <!-- Linkki ulkoiseen JavaScript-tiedostoon -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        /* Puhelimeen */
+
+        @media (max-width: 768px) {
+
+
+            body {
+                font-family: 'Playfair Display SC';
+            }
+
+            .nav-links {
+                display: flex;
+                flex-grow: 1;
+                justify-content: center;
+                gap: 100px;
+                align-items: center;
+            }
+
+            .language-links {
+                display: flex;
+                gap: 15px;
+                font-weight: bold;
+                margin-right: 25px;
+                margin-left: 15px;
+            }
+
+            .nav-links a,
+            .language-links a {
+                text-decoration: none;
+                color: black;
+                font-size: 18px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .nav-links a:hover,
+            .language-links a:hover {
+                color: darkgray;
+            }
+
+            .navbar a {
+                text-decoration: none;
+                color: black;
+                text-align: center;
+            }
+
+            .banner {
+                height: 600px;
+                background: #ccc;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .section {
+                padding: 40px;
+                text-align: center;
+            }
+
+            .content-box {
+                width: 70%;
+                margin: auto;
+                height: 300px;
+                background: #ddd;
+            }
+
+            .dual-section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+                margin-top: 40px;
+                flex-wrap: wrap;
+                text-align: center;
+            }
+
+            .content-box2,
+            .subscription-box {
+                width: 400px;
+                height: 200px;
+                background: #eee;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                border-radius: 5px;
+            }
+
+            .subscription-box input {
+                width: 80%;
+                padding: 10px;
+                margin: 5px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .subscription-box button {
+                padding: 10px 20px;
+                border: none;
+                background: #fff;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .events-slider {
+                position: relative;
+                width: 100%;
+                max-width: 1110px;
+                margin: auto;
+                display: flex;
+                align-items: center;
+            }
+
+            .events {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+                width: 100px;
+            }
+
+            .event-box {
+                width: 350px;
+                height: 350px;
+                background: #bbb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 10px;
+                flex-shrink: 0;
+            }
+
+            .nav-buttons {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                width: 100%;
+                top: 0;
+                bottom: 0;
+                align-items: center;
+            }
+
+            .nav-button {
+                background: transparent;
+                color: black;
+                border: none;
+                cursor: pointer;
+                font-size: 50px;
+            }
+
+            .footer h3 {
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+
+            .footer a {
+                display: block;
+                margin: 10px 0;
+                text-decoration: none;
+                color: black;
+            }
+
+            .subscription {
+                margin-top: 20px;
+            }
+
+            .h2 {
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            #ITAKLOGO {
+                max-width: 200px;
+                width: auto;
+                height: auto;
+            }
+
+            #ITAKLOGO1 {
+                max-width: 70px;
+                width: auto;
+                height: auto;
+            }
+
+
+            body {
+                font-family: 'Playfair Display SC';
+            }
+
+            .navbar {
+                background-color: rgb(198, 226, 203) !important;
+                color: black;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+                padding: 15px;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+                justify-content: center;
+            }
+
+            .navbar-nav {
+                align-items: center;
+                text-align: center;
+            }
+
+            .nav-button:first-child {
+                left: 0px;
+            }
+
+            .nav-button:last-child {
+                right: 40px;
+            }
+
+            .nav-buttons {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                width: 40%;
+                top: 0;
+                bottom: 0;
+                align-items: center;
+                width: 420px;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                margin-top: 50px;
+                padding: 50px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .tulevat-esitykset {
+                padding: 30px;
+            }
+
+            .content-box {
+                width: 100vw;
+                max-width: 100%;
+                background: rgb(198, 226, 203);
+                padding: 50px 10%;
+                text-align: left;
+                font-size: 18px;
+                font-family: 'Georgia', serif;
+                padding: 30px 5%;
+                font-size: 16px;
+                justify-content: 20px;
+
+            }
+
+            .subscription-box {
+                width: 400px;
+                height: 200px;
+                background: rgb(198, 226, 203);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 100px;
+                border-radius: 5px;
+                justify-content: center;
+            }
+
+            .content-box2 {
+                width: 400px;
+                height: 200px;
+                background: rgb(198, 226, 203);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 100px;
+                border-radius: 5px;
+                justify-content: center;
+
+            }
+
+            .events-slider {
+                overflow: hidden;
+                display: flex;
+            }
+
+            .events {
+                display: flex;
+                transition: transform 0.3s ease-in-out;
+                gap: 20px;
+                width: 60%;
+            }
+
+            .event {
+                position: relative;
+                text-align: center;
+                justify-content: center;
+
+            }
+
+            .event-box {
+                width: 100%;
+                background: #bbb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                scroll-snap-align: center;
+                margin-left: 15%;
+                overflow: hidden;
+            }
+
+            .event-info {
+                width: 320px;
+                display: show;
+                background: rgb(198, 226, 203);
+                color: #333;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-top: 5px;
+                margin-left: 15%;
+            }
+
+
+            .nav-tools ul {
+                margin-right: 20px;
+            }
+
+
+            .subscription-box input {
+                width: 150%;
+            }
+
+
+            .footer {
+                background: rgb(254, 192, 170);
+                padding: 60px;
+                text-align: center;
+                margin-top: 70px;
+                font-size: 14px;
+            }
+
+            .footer a {
+                color: black;
+            }
+
+
+            .divider {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .divider::before,
+            .divider::after {
+                content: "◆";
+                font-size: 14px;
+                margin: 0 10px;
+            }
+
+            .divider-line {
+                flex-grow: 1;
+                width: 100%;
+                height: 1px;
+                background-color: black;
+            }
+
+            .dropdown-menu {
+                background: rgb(198, 226, 203);
+                border-style: none;
+            }
+
+
+            .my-button {
+                background: rgb(56, 77, 72) !important;
+                color: rgb(254, 192, 170) !important;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .navbar-expand-lg {
+                display: none !important;
+            }
+        }
+
+
+        @media (max-width: 1023px) {
+            .custom-navbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <nav class="navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                onclick="toggleMenuIcon(this)">
+                <span class="toggler-icon">&#9776;</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav">
+
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+
+                    <li class="nav-item"><a class="nav-link active" href="#">ETUSIVU</a></li>
+
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            MEISTÄ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Ihmiset</a></li>
+                            <li><a class="dropdown-item" href="#">Strategia</a></li>
+                            <li><a class="dropdown-item" href="#">Vuosikertomukset</a></li>
+                            <li><a class="dropdown-item" href="#">Tasa-arvo ja yhdenvertaisuus</a></li>
+                            <li><a class="dropdown-item" href="#">Turvallisempi tila</a></li>
+                            <li><a class="dropdown-item" href="#">Arkisto</a></li>
+                        </ul>
+                    </li>
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            AJANKOHTAISTA
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Kalenteri</a></li>
+                            <li><a class="dropdown-item" href="#">Esitykset</a></li>
+                            <li><a class="dropdown-item" href="#">Liput</a></li>
+                        </ul>
+                    </li>
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            TANSSIA ITÄ-SUOMESSA
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Esitykset</a></li>
+                            <li><a class="dropdown-item" href="#">Kurssit</a></li>
+                            <li><a class="dropdown-item" href="#">Palvelut</a></li>
+                            <li><a class="dropdown-item" href="#">Tapaamiset</a></li>
+                        </ul>
+                    </li>
+
+
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ohjelmistoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            ITAK-NÄYTTÄMÖ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ohjelmistoDropdown">
+                            <li><a class="dropdown-item" href="#">Vuokraa tila</a></li>
+                            <li><a class="dropdown-item" href="#">tekniikka</a></li>
+                            <li><a class="dropdown-item" href="#">Esteettömyys</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="img"><img id="ITAKLOGO1" src="ITAK_logo_musta-ilman-taustaa.png" width="40%" height="30%"></div>
+
+            <div class="nav-tools">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            FI/EN
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Suomi</a>
+                            <a class="dropdown-item" href="#">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+    <div class="custom-navbar">
+        <div style="width: 170px;"></div>
+        <div class="nav-links">
+            <a href="#">Etusivu</a>
+            <a href="#">Meistä</a>
+            <a href="#">Ohjelmisto/kalenteri</a>
+            <a href="#"><img id="ITAKLOGO1" src="ITAK_logo_musta-ilman-taustaa.png" width="40%" height="30%"></a>
+            <a href="#">Tanssia Itä-Suomessa</a>
+            <a href="#">Ajankohtaista</a>
+            <a href="#">ITAK-näyttämö</a>
+        </div>
+        <div class="language-links">
+            <a href="#">FI</a>
+            <a href="#">EN</a>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="banner">Banneri</div>
+
+
+    <div class="container-fluid">
+        <h2 class="h2" style="padding-top: 30px;">ITÄ-SUOMEN TANSSIN ALUEKESUS</h2>
+        <div class="content-box">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id iaculis elit, ut suscipit tortor. Sed
+            ac nunc turpis. Etiam bibendum massa nunc, eu tempor purus fermentum viverra. Phasellus dolor nulla,
+            condimentum sed egestas non, condimentum sed neque. Nullam dapibus, felis sit amet consectetur scelerisque,
+            metus sem fermentum orci, eget condimentum ante odio et lacus. Praesent porttitor lacinia tellus vulputate
+            gravida. Donec congue rhoncus sem at imperdiet. Quisque molestie quam risus, a vulputate dolor hendrerit eu.
+        </div>
+    </div>
+
+
+    <div class="container-fluid tulevat-esitykset">
+        <h2 class="h2">TULEVAT ESITYKSET</h2>
+        <div class="events-slider">
+            <div class="events">
+                <div class="event">
+                    <div class="event-box" onclick="toggleInfo(this)">Tapahtuma 1</div>
+                    <div class="event-info">Info about Tapahtuma 1</div>
+                </div>
+                <div class="event">
+                    <div class="event-box" onclick="toggleInfo(this)">Tapahtuma 2</div>
+                    <div class="event-info">Info about Tapahtuma 2</div>
+                </div>
+                <div class="event">
+                    <div class="event-box" onclick="toggleInfo(this)">Tapahtuma 3</div>
+                    <div class="event-info">Info about Tapahtuma 3</div>
+                </div>
+                <div class="event">
+                    <div class="event-box" onclick="toggleInfo(this)">Tapahtuma 4</div>
+                    <div class="event-info">Info about Tapahtuma 4</div>
+                </div>
+                <div class="event">
+                    <div class="event-box" onclick="toggleInfo(this)">Tapahtuma 5</div>
+                    <div class="event-info">Info about Tapahtuma 5</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button" onclick="moveSlide(-1)">&lt;</button> <!-- Vasemmanpuoleinen siirtonappi -->
+                <button class="nav-button" onclick="moveSlide(1)">&gt;</button> <!-- Oikeanpuoleinen siirtonappi -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h2 class="h2">LIPUT</h2>
+        <div class="content-box">
+            12 / 20 € ennakkoon <br>
+            17 / 24 € ovelta <br>
+            Varaukset ryhmille itak@itak.fi
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h2 class="h2" style="padding-top: 30px;">TILAA UUTISKIRJE</h2>
+        <div class="content-box">
+            <div>
+                <div class="subscription-box">
+                    <input type="text" placeholder="Nimi">
+                    <input type="email" placeholder="Sähköposti">
+                    <button class="my-button">Lähetä</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h3><img id="ITAKLOGO" src="ITAK_logo_musta-ilman-taustaa.png" width="40%" height="30%"></h3>
+        <a href="#">ITAK-Näyttämö</a>
+        <a href="#">Sudekatu 42/2, Kuopio</a>
+        <a href="#">Yhteystiedot</a>
+        <a href="#">Medialle</a>
+        <a href="#">Saavutettavuusseloste</a>
+        <img id="ITAKLOGO" src="maksammetaitelijalle.png" width="40%" height="30%">
+    </div>
+
+    <script>
+
+        let currentSlide = 0;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const slides = document.querySelector(".events");
+            slides.style.transform = `translateX(0px)`; // Ensure it starts at the first event
+        });
+
+
+
+
+        function moveSlide(direction) {
+            const slides = document.querySelector(".events");
+            const eventBoxes = document.querySelectorAll(".event-box");
+            const totalSlides = eventBoxes.length;
+
+            if (eventBoxes.length === 0) return;
+
+            const eventWidth = eventBoxes[0].offsetWidth;
+            const eventMargin = parseInt(getComputedStyle(eventBoxes[0]).marginRight, 20);
+            const eventWidthWithMargin = eventWidth + eventMargin; 
+
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1; // Loop back to last slide
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0; // Loop back to first slide
+            }
+
+            slides.style.transition = "transform 0.3s ease-in-out"; // Smooth animation
+            slides.style.transform = `translateX(-${currentSlide * eventWidthWithMargin}px)`;
+        }
+
+
+
+
+        function toggleInfo(element) {
+            let infoBox = element.nextElementSibling; // Select the event-info box next to the clicked event-box
+
+            if (infoBox.style.display === "none" || infoBox.style.display === "") {
+                // Hide all event-info elements before showing the clicked one
+                document.querySelectorAll(".event-info").forEach(info => info.style.display = "none");
+
+                infoBox.style.display = "block"; // Show the clicked event's info
+            } else {
+                infoBox.style.display = "none"; // Hide it if it's already visible
+            }
+        }
+
+
+
+
+        function toggleMenuIcon(button) {
+            let icon = button.querySelector(".toggler-icon");
+
+            if (!button.classList.contains("open")) {
+                icon.innerHTML = "&#10006;"; // Unicode "X" symbol
+                button.classList.add("open");
+            } else {
+                icon.innerHTML = "&#9776;"; // Unicode hamburger menu
+                button.classList.remove("open");
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
